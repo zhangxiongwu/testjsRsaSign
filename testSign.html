@@ -1,0 +1,22 @@
+<html>
+<head>
+<script language="JavaScript" type="text/javascript" src="jsrsasign-latest-all-min.js"></script>
+<script type="text/javascript">
+	var signData = 'my sign data';
+	var privateKey = '-----BEGIN RSA PRIVATE KEY-----MIICXAIBAAKBgQC4kyLXI9LPCdbLaDw1Wk7IJBx4vqa+d11HRiUskmJQmZroMF/v7nBrlssb/To91Uro9syKiwUTr3WhRlHkWNqHG+sxeI0WoTzC/lDYtSnfO13Jwc4K6GcWqjvSj+hP2AGnMdHcOvdUbtll4BXdAzHviMzo0LOy5A1zalhpmLZfLQIDAQABAoGBAIiNossUX9R47QbT+Sdnxr1fqgjS1D45xTMD/GC7dC05V1fM4k16VIXkrCPq9vnkIWW1oaImM/1aZGaKxe9wpUrnvXb4ciAP2ZKOI3C/S+NTWF+xnurmw+PtbNxa4wX8FPUGmStKTzOZKMkzBpsGu9xWjPE+72FA7yn8haj0p3ipAkEA99V9jVOGM/8/6/0djlmNMY2Rxeluu9WS/G/vPsh5R66BNsltyiF8aeqH26zLfoqbP+FY7k5MbeoCqVuso9OUUwJBAL6oC+9Q9j5zs9aJrRe7J8r2m8NXongpVrrKlGe8b0MxALpn/2sWlgz02k0a0gag/4/SdmzqY4N+i4usRoxnzn8CQGZybwMDut81rWPM7vHQHOiV/+NS +n5U6/zD/J70WgYCodFW9LZwnzBdTanGRRxbCZAfhBaGcVuiN1Vw2u2h4ZcCQAb54yXoknoKhcQN2ZWKtZQJnf1x0XIQISpIi1GYZYHR4zLu5zul4eurcelsV88CSRecHdUyZl3DXZvIu/QbQEUCQHnLFxd6WnLMXdAQhOixYTIXx3im0/15jCBd0zaoqHpLRoB7z/Ask5sQJwXNalVag+GC7DPTbloXWzywrNI2DYA=-----END RSA PRIVATE KEY-----';
+	function doSign() {
+		  var rsa = new RSAKey(); // 新建RSA对象
+		  rsa = KEYUTIL.getKey(privateKey); // 设置私钥
+		  var hashAlg = 'sha1'; // 设置sha1
+		  var hSig = rsa.signString(signData, hashAlg); // 加签
+		  hSig = hex2b64(hSig); // hex 转 b64
+		  return hSig;
+	}
+</script>
+</head>
+<body>
+</body>
+<script>
+	document.body.innerHTML = doSign(); // 输出
+</script>
+</html>
